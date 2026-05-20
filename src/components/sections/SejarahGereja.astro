@@ -33,7 +33,8 @@ const siteSettings = getSiteSettingsContent();
               <p>{item.narasi}</p>
               {item.namaKetua && (
                 <p class="history-meta">
-                  {item.labelKetua ?? 'Ketua Jemaat'}: {item.namaKetua}
+                  <span>{item.labelKetua ?? 'Ketua Jemaat'}</span>
+                  <em>{item.namaKetua}</em>
                 </p>
               )}
             </div>

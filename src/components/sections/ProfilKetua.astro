@@ -6,15 +6,18 @@ const siteSettings = getSiteSettingsContent();
 ---
 
 <section class="content-section">
-  <div class="shell profile-grid reveal">
-    <div class="profile-visual">
-      {
-        profil.foto ? (
-          <img src={profil.foto} alt={profil.nama} loading="lazy" />
-        ) : (
-          <div class="image-fallback image-fallback-profile">{profil.nama}</div>
-        )
-      }
+  <div class="shell profile-inner reveal">
+    <div class="profile-photo-wrap">
+      <div class="profile-photo">
+        {
+          profil.foto ? (
+            <img src={profil.foto} alt={profil.nama} loading="lazy" />
+          ) : (
+            <div class="image-fallback image-fallback-profile">{profil.nama}</div>
+          )
+        }
+      </div>
+      <div class="profile-photo-accent" aria-hidden="true"></div>
     </div>
 
     <div class="profile-copy">
@@ -23,7 +26,7 @@ const siteSettings = getSiteSettingsContent();
       <p class="profile-role">{profil.jabatan}</p>
       <p class="profile-subtitle">{profil.subJudul}</p>
       <p>{profil.biografi}</p>
-      <blockquote>{profil.kutipan}</blockquote>
+      <blockquote class="profile-quote">{profil.kutipan}</blockquote>
     </div>
   </div>
 </section>

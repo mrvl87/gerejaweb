@@ -24,11 +24,17 @@ const groupedLevels = Object.entries(
     <div class="structure-stack">
       {
         groupedLevels.map(([level, items]) => (
-          <div class="structure-level">
-            <span class="structure-level-label">Level {level}</span>
+          <div class="structure-level" data-level={level}>
             <div class="structure-grid">
               {items.map((item) => (
-                <article class={cn('structure-card', item.isMilestone && 'structure-card-milestone')}>
+                <article
+                  class={cn(
+                    'structure-card',
+                    level === '1' && 'structure-card-primary',
+                    level === '2' && 'structure-card-gold',
+                    item.isMilestone && 'structure-card-milestone'
+                  )}
+                >
                   <p>{item.jabatan}</p>
                   <h3>{item.nama}</h3>
                 </article>

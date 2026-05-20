@@ -12,57 +12,56 @@ const siteSettings = getSiteSettingsContent();
 const activeTheme = liturgiThemes[pengaturan.masaLiturgi] ?? liturgiThemes.biasa;
 ---
 
-<section class="hero-section">
-  <div class="shell hero-grid">
-    <div class="hero-copy reveal">
-      <p class="eyebrow">{siteSettings.publicText.heroBadge}</p>
-      <h1>{siteSettings.namaGereja}</h1>
-      <p class="lead">{siteSettings.tagline}</p>
-      <p class="hero-description">{siteSettings.description}</p>
-    </div>
+<section class="hero" data-carousel>
+  <div class="hero-slides" data-slide-track>
+    {
+      slides.map((slide, index) => (
+        <article
+          class="hero-slide"
+          data-slide
+          data-active={index === 0 ? 'true' : 'false'}
+          style={slide.gambar ? `--hero-image: url(${slide.gambar});` : undefined}
+        >
+          <svg
+            class="slide-pattern"
+            viewBox="0 0 800 520"
+            preserveAspectRatio="xMidYMid slice"
+            aria-hidden="true"
+          >
+            <defs>
+              <pattern id={`pg${index}`} patternUnits="userSpaceOnUse" width="80" height="80">
+                <path d="M40 10 L40 70 M10 40 L70 40" />
+                <circle cx="40" cy="40" r="20" />
+              </pattern>
+            </defs>
+            <rect width="800" height="520" fill={`url(#pg${index})`} />
+          </svg>
+          <div class="hero-overlay" aria-hidden="true"></div>
+          <div class="shell hero-copy">
+            <p class="eyebrow">{siteSettings.publicText.heroBadge}</p>
+            <h1>{siteSettings.namaGereja}</h1>
+            <p class="hero-sub">{siteSettings.tagline}</p>
+            <p class="hero-caption">{slide.judul} - {slide.subjudul}</p>
+            {!slide.gambar && <p class="hero-theme">{activeTheme.label}</p>}
+          </div>
+        </article>
+      ))
+    }
+  </div>
 
-    <div class="hero-carousel reveal" data-carousel>
-      <div class="hero-carousel-track">
-        {
-          slides.map((slide, index) => (
-            <article
-              class="hero-slide"
-              data-slide
-              data-active={index === 0 ? 'true' : 'false'}
-            >
-              <div
-                class="hero-slide-media"
-                style={
-                  slide.gambar
-                    ? `background-image: linear-gradient(180deg, rgba(17, 17, 17, 0.08), rgba(17, 17, 17, 0.6)), url(${slide.gambar});`
-                    : undefined
-                }
-              >
-                {!slide.gambar && <span class="hero-slide-fallback">{activeTheme.label}</span>}
-              </div>
-              <div class="hero-slide-copy">
-                <span>{String(index + 1).padStart(2, '0')}</span>
-                <h2>{slide.judul}</h2>
-                <p>{slide.subjudul}</p>
-              </div>
-            </article>
-          ))
-        }
-      </div>
-
-      <div class="hero-dots" aria-label="Navigasi carousel">
-        {
-          slides.map((slide, index) => (
-            <button
-              type="button"
-              class="hero-dot"
-              data-dot
-              data-active={index === 0 ? 'true' : 'false'}
-              aria-label={slide.judul}
-            />
-          ))
-        }
-      </div>
+  <div class="shell hero-ui">
+    <div class="hero-dots" aria-label="Navigasi carousel">
+      {
+        slides.map((slide, index) => (
+          <button
+            type="button"
+            class="hero-dot"
+            data-dot
+            data-active={index === 0 ? 'true' : 'false'}
+            aria-label={slide.judul}
+          />
+        ))
+      }
     </div>
   </div>
 </section>

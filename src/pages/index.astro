@@ -43,6 +43,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     let activeIndex = 0;
 
     const syncCarousel = (index) => {
+      const track = document.querySelector('[data-slide-track]');
+      if (track) {
+        track.style.transform = `translateX(-${index * 100}%)`;
+      }
       slides.forEach((slide, slideIndex) => {
         slide.dataset.active = slideIndex === index ? 'true' : 'false';
       });
