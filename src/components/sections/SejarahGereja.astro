@@ -1,16 +1,16 @@
 ---
-import { siteConfig } from '../../config/site.config';
 import { cn } from '../../lib/format';
-import { getSejarahContent } from '../../lib/site-content';
+import { getSejarahContent, getSiteSettingsContent } from '../../lib/site-content';
 
 const sejarah = getSejarahContent();
+const siteSettings = getSiteSettingsContent();
 ---
 
 <section class="content-section" id="sejarah">
   <div class="shell reveal">
     <div class="section-heading">
-      <p class="eyebrow">{siteConfig.publicText.sejarahEyebrow}</p>
-      <h2>{siteConfig.publicText.sejarahTitle}</h2>
+      <p class="eyebrow">{siteSettings.publicText.sejarahEyebrow}</p>
+      <h2>{siteSettings.publicText.sejarahTitle}</h2>
     </div>
 
     <div class="history-timeline" data-history>

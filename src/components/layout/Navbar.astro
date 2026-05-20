@@ -1,5 +1,7 @@
 ---
-import { siteConfig } from '../../config/site.config';
+import { getSiteSettingsContent } from '../../lib/site-content';
+
+const siteSettings = getSiteSettingsContent();
 ---
 
 <header class="site-header">
@@ -7,15 +9,15 @@ import { siteConfig } from '../../config/site.config';
     <a class="brand" href="/">
       <span class="brand-mark" aria-hidden="true"></span>
       <span class="brand-copy">
-        <strong>{siteConfig.namaGereja}</strong>
-        <small>{siteConfig.tagline}</small>
+        <strong>{siteSettings.namaGereja}</strong>
+        <small>{siteSettings.tagline}</small>
       </span>
     </a>
 
-    <nav aria-label={siteConfig.publicText.menuLabel}>
+    <nav aria-label={siteSettings.publicText.menuLabel}>
       <ul class="nav-list">
         {
-          siteConfig.navLinks.map((item) => (
+          siteSettings.navLinks.map((item) => (
             <li>
               <a href={item.href}>{item.label}</a>
             </li>

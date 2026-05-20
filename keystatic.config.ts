@@ -17,6 +17,112 @@ export default config({
     repo: githubRepo,
   },
   singletons: {
+    siteSettings: singleton({
+      label: 'Pengaturan Situs',
+      path: 'content/site/site-settings',
+      format: { data: 'json' },
+      schema: {
+        namaGereja: fields.text({ label: 'Nama Gereja', validation: { isRequired: true } }),
+        tagline: fields.text({ label: 'Tagline', validation: { isRequired: true } }),
+        alamat: fields.text({
+          label: 'Alamat',
+          multiline: true,
+          validation: { isRequired: true },
+        }),
+        telepon: fields.text({ label: 'Telepon', validation: { isRequired: true } }),
+        email: fields.text({ label: 'Email', validation: { isRequired: true } }),
+        siteUrl: fields.text({ label: 'URL Situs', validation: { isRequired: true } }),
+        description: fields.text({
+          label: 'Deskripsi SEO',
+          multiline: true,
+          validation: { isRequired: true },
+        }),
+        navLinks: fields.array(
+          fields.object({
+            label: fields.text({ label: 'Label', validation: { isRequired: true } }),
+            href: fields.text({ label: 'Link', validation: { isRequired: true } }),
+          }),
+          {
+            label: 'Navigasi',
+            itemLabel: (props) => props.fields.label.value || 'Link baru',
+          }
+        ),
+        publicText: fields.object({
+          menuLabel: fields.text({ label: 'Label menu', validation: { isRequired: true } }),
+          skipToContent: fields.text({
+            label: 'Teks skip link',
+            validation: { isRequired: true },
+          }),
+          heroBadge: fields.text({ label: 'Badge hero', validation: { isRequired: true } }),
+          profilEyebrow: fields.text({
+            label: 'Eyebrow profil',
+            validation: { isRequired: true },
+          }),
+          strukturTitle: fields.text({
+            label: 'Judul struktur',
+            validation: { isRequired: true },
+          }),
+          strukturEyebrow: fields.text({
+            label: 'Eyebrow struktur',
+            validation: { isRequired: true },
+          }),
+          sejarahTitle: fields.text({
+            label: 'Judul sejarah',
+            validation: { isRequired: true },
+          }),
+          sejarahEyebrow: fields.text({
+            label: 'Eyebrow sejarah',
+            validation: { isRequired: true },
+          }),
+          visiTitle: fields.text({ label: 'Judul visi', validation: { isRequired: true } }),
+          misiTitle: fields.text({ label: 'Judul misi', validation: { isRequired: true } }),
+          visiEyebrow: fields.text({
+            label: 'Eyebrow visi misi',
+            validation: { isRequired: true },
+          }),
+          statistikTitle: fields.text({
+            label: 'Judul statistik',
+            validation: { isRequired: true },
+          }),
+          statistikEyebrow: fields.text({
+            label: 'Eyebrow statistik',
+            validation: { isRequired: true },
+          }),
+          footerTitle: fields.text({ label: 'Judul footer', validation: { isRequired: true } }),
+          footerAddress: fields.text({
+            label: 'Label alamat',
+            validation: { isRequired: true },
+          }),
+          footerPhone: fields.text({
+            label: 'Label telepon',
+            validation: { isRequired: true },
+          }),
+          footerEmail: fields.text({
+            label: 'Label email',
+            validation: { isRequired: true },
+          }),
+          blogTitle: fields.text({ label: 'Judul blog', validation: { isRequired: true } }),
+          blogSubtitle: fields.text({
+            label: 'Subjudul blog',
+            multiline: true,
+            validation: { isRequired: true },
+          }),
+          blogReadMore: fields.text({
+            label: 'Teks baca artikel',
+            validation: { isRequired: true },
+          }),
+          blogBack: fields.text({
+            label: 'Teks kembali blog',
+            validation: { isRequired: true },
+          }),
+          footerPrayer: fields.text({
+            label: 'Teks footer',
+            multiline: true,
+            validation: { isRequired: true },
+          }),
+        }),
+      },
+    }),
     pengaturan: singleton({
       label: 'Pengaturan Umum',
       path: 'content/site/pengaturan',

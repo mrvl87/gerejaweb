@@ -1,20 +1,24 @@
 ---
 import { liturgiThemes } from '../../config/liturgi.config';
-import { siteConfig } from '../../config/site.config';
-import { getCarouselContent, getPengaturanContent } from '../../lib/site-content';
+import {
+  getCarouselContent,
+  getPengaturanContent,
+  getSiteSettingsContent,
+} from '../../lib/site-content';
 
 const slides = getCarouselContent();
 const pengaturan = getPengaturanContent();
+const siteSettings = getSiteSettingsContent();
 const activeTheme = liturgiThemes[pengaturan.masaLiturgi] ?? liturgiThemes.biasa;
 ---
 
 <section class="hero-section">
   <div class="shell hero-grid">
     <div class="hero-copy reveal">
-      <p class="eyebrow">{siteConfig.publicText.heroBadge}</p>
-      <h1>{siteConfig.namaGereja}</h1>
-      <p class="lead">{siteConfig.tagline}</p>
-      <p class="hero-description">{siteConfig.description}</p>
+      <p class="eyebrow">{siteSettings.publicText.heroBadge}</p>
+      <h1>{siteSettings.namaGereja}</h1>
+      <p class="lead">{siteSettings.tagline}</p>
+      <p class="hero-description">{siteSettings.description}</p>
     </div>
 
     <div class="hero-carousel reveal" data-carousel>

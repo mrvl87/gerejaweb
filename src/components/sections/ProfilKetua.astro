@@ -1,8 +1,8 @@
 ---
-import { siteConfig } from '../../config/site.config';
-import { getProfilKetuaContent } from '../../lib/site-content';
+import { getProfilKetuaContent, getSiteSettingsContent } from '../../lib/site-content';
 
 const profil = getProfilKetuaContent();
+const siteSettings = getSiteSettingsContent();
 ---
 
 <section class="content-section">
@@ -18,7 +18,7 @@ const profil = getProfilKetuaContent();
     </div>
 
     <div class="profile-copy">
-      <p class="eyebrow">{siteConfig.publicText.profilEyebrow}</p>
+      <p class="eyebrow">{siteSettings.publicText.profilEyebrow}</p>
       <h2>{profil.nama}</h2>
       <p class="profile-role">{profil.jabatan}</p>
       <p class="profile-subtitle">{profil.subJudul}</p>

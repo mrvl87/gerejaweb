@@ -1,9 +1,9 @@
 ---
-import { siteConfig } from '../../config/site.config';
 import { cn } from '../../lib/format';
-import { getStrukturOrganisasiContent } from '../../lib/site-content';
+import { getSiteSettingsContent, getStrukturOrganisasiContent } from '../../lib/site-content';
 
 const struktur = getStrukturOrganisasiContent();
+const siteSettings = getSiteSettingsContent();
 const groupedLevels = Object.entries(
   struktur.reduce<Record<string, typeof struktur>>((accumulator, item) => {
     const key = String(item.level);
@@ -17,8 +17,8 @@ const groupedLevels = Object.entries(
 <section class="content-section surface-section" id="struktur">
   <div class="shell reveal">
     <div class="section-heading">
-      <p class="eyebrow">{siteConfig.publicText.strukturEyebrow}</p>
-      <h2>{siteConfig.publicText.strukturTitle}</h2>
+      <p class="eyebrow">{siteSettings.publicText.strukturEyebrow}</p>
+      <h2>{siteSettings.publicText.strukturTitle}</h2>
     </div>
 
     <div class="structure-stack">

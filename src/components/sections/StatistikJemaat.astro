@@ -1,15 +1,15 @@
 ---
-import { siteConfig } from '../../config/site.config';
-import { getStatistikContent } from '../../lib/site-content';
+import { getSiteSettingsContent, getStatistikContent } from '../../lib/site-content';
 
 const statistik = getStatistikContent();
+const siteSettings = getSiteSettingsContent();
 ---
 
 <section class="content-section surface-section">
   <div class="shell reveal">
     <div class="section-heading">
-      <p class="eyebrow">{siteConfig.publicText.statistikEyebrow}</p>
-      <h2>{siteConfig.publicText.statistikTitle}</h2>
+      <p class="eyebrow">{siteSettings.publicText.statistikEyebrow}</p>
+      <h2>{siteSettings.publicText.statistikTitle}</h2>
     </div>
 
     <div class="stats-grid">

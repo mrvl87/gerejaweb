@@ -1,30 +1,32 @@
 ---
-import { siteConfig } from '../../config/site.config';
+import { getSiteSettingsContent } from '../../lib/site-content';
+
+const siteSettings = getSiteSettingsContent();
 ---
 
 <footer class="site-footer" id="footer">
   <div class="shell footer-grid reveal">
     <div class="footer-copy">
-      <p class="eyebrow">{siteConfig.publicText.footerTitle}</p>
-      <h2>{siteConfig.namaGereja}</h2>
-      <p>{siteConfig.publicText.footerPrayer}</p>
+      <p class="eyebrow">{siteSettings.publicText.footerTitle}</p>
+      <h2>{siteSettings.namaGereja}</h2>
+      <p>{siteSettings.publicText.footerPrayer}</p>
     </div>
 
     <dl class="footer-meta">
       <div>
-        <dt>{siteConfig.publicText.footerAddress}</dt>
-        <dd>{siteConfig.alamat}</dd>
+        <dt>{siteSettings.publicText.footerAddress}</dt>
+        <dd>{siteSettings.alamat}</dd>
       </div>
       <div>
-        <dt>{siteConfig.publicText.footerPhone}</dt>
+        <dt>{siteSettings.publicText.footerPhone}</dt>
         <dd>
-          <a href={`tel:${siteConfig.telepon}`}>{siteConfig.telepon}</a>
+          <a href={`tel:${siteSettings.telepon}`}>{siteSettings.telepon}</a>
         </dd>
       </div>
       <div>
-        <dt>{siteConfig.publicText.footerEmail}</dt>
+        <dt>{siteSettings.publicText.footerEmail}</dt>
         <dd>
-          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+          <a href={`mailto:${siteSettings.email}`}>{siteSettings.email}</a>
         </dd>
       </div>
     </dl>

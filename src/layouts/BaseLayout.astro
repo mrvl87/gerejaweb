@@ -1,7 +1,6 @@
 ---
 import { liturgiThemes } from '../config/liturgi.config';
-import { siteConfig } from '../config/site.config';
-import { getPengaturanContent } from '../lib/site-content';
+import { getPengaturanContent, getSiteSettingsContent } from '../lib/site-content';
 import '../styles/global.css';
 
 interface Props {
@@ -9,10 +8,11 @@ interface Props {
   description?: string;
 }
 
-const { title, description = siteConfig.description } = Astro.props;
+const siteSettings = getSiteSettingsContent();
+const { title, description = siteSettings.description } = Astro.props;
 const pengaturan = getPengaturanContent();
 const activeTheme = liturgiThemes[pengaturan.masaLiturgi] ?? liturgiThemes.biasa;
-const pageTitle = title ? `${title} | ${siteConfig.namaGereja}` : siteConfig.namaGereja;
+const pageTitle = title ? `${title} | ${siteSettings.namaGereja}` : siteSettings.namaGereja;
 ---
 
 <!doctype html>
@@ -26,8 +26,8 @@ const pageTitle = title ? `${title} | ${siteConfig.namaGereja}` : siteConfig.nam
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={new URL(Astro.url.pathname, siteConfig.siteUrl).toString()} />
-    <link rel="canonical" href={new URL(Astro.url.pathname, siteConfig.siteUrl).toString()} />
+    <meta property="og:url" content={new URL(Astro.url.pathname, siteSettings.siteUrl).toString()} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, siteSettings.siteUrl).toString()} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -37,7 +37,7 @@ const pageTitle = title ? `${title} | ${siteConfig.namaGereja}` : siteConfig.nam
     <meta name="theme-color" content={activeTheme.warnaPrimer} />
   </head>
   <body class={`liturgi-${pengaturan.masaLiturgi}`}>
-    <a class="skip-link" href="#konten">{siteConfig.publicText.skipToContent}</a>
+    <a class="skip-link" href="#konten">{siteSettings.publicText.skipToContent}</a>
     <slot />
   </body>
 </html>
