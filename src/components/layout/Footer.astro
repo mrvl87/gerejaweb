@@ -1,0 +1,32 @@
+---
+import { siteConfig } from '../../config/site.config';
+---
+
+<footer class="site-footer" id="footer">
+  <div class="shell footer-grid reveal">
+    <div class="footer-copy">
+      <p class="eyebrow">{siteConfig.publicText.footerTitle}</p>
+      <h2>{siteConfig.namaGereja}</h2>
+      <p>{siteConfig.publicText.footerPrayer}</p>
+    </div>
+
+    <dl class="footer-meta">
+      <div>
+        <dt>{siteConfig.publicText.footerAddress}</dt>
+        <dd>{siteConfig.alamat}</dd>
+      </div>
+      <div>
+        <dt>{siteConfig.publicText.footerPhone}</dt>
+        <dd>
+          <a href={`tel:${siteConfig.telepon}`}>{siteConfig.telepon}</a>
+        </dd>
+      </div>
+      <div>
+        <dt>{siteConfig.publicText.footerEmail}</dt>
+        <dd>
+          <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</footer>

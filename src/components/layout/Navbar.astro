@@ -1,0 +1,27 @@
+---
+import { siteConfig } from '../../config/site.config';
+---
+
+<header class="site-header">
+  <div class="shell nav-shell">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-copy">
+        <strong>{siteConfig.namaGereja}</strong>
+        <small>{siteConfig.tagline}</small>
+      </span>
+    </a>
+
+    <nav aria-label={siteConfig.publicText.menuLabel}>
+      <ul class="nav-list">
+        {
+          siteConfig.navLinks.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

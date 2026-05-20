@@ -1,0 +1,30 @@
+{
+  "items": [
+    {
+      "level": 1,
+      "jabatan": "Ketua Jemaat",
+      "nama": "Pdt. Markus Kafiar, S.Th.",
+      "isMilestone": true
+    },
+    {
+      "level": 2,
+      "jabatan": "Sekretaris",
+      "nama": "Yuliana Womsiwor, S.Pd."
+    },
+    {
+      "level": 2,
+      "jabatan": "Bendahara",
+      "nama": "Paulus Yarangga"
+    },
+    {
+      "level": 3,
+      "jabatan": "Koordinator Pelayanan Anak",
+      "nama": "Maria Rumbekwan"
+    },
+    {
+      "level": 3,
+      "jabatan": "Koordinator Pemuda",
+      "nama": "Samuel Wenda"
+    }
+  ]
+}

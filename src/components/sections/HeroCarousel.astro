@@ -1,0 +1,64 @@
+---
+import { liturgiThemes } from '../../config/liturgi.config';
+import { siteConfig } from '../../config/site.config';
+import { getCarouselContent, getPengaturanContent } from '../../lib/site-content';
+
+const slides = getCarouselContent();
+const pengaturan = getPengaturanContent();
+const activeTheme = liturgiThemes[pengaturan.masaLiturgi] ?? liturgiThemes.biasa;
+---
+
+<section class="hero-section">
+  <div class="shell hero-grid">
+    <div class="hero-copy reveal">
+      <p class="eyebrow">{siteConfig.publicText.heroBadge}</p>
+      <h1>{siteConfig.namaGereja}</h1>
+      <p class="lead">{siteConfig.tagline}</p>
+      <p class="hero-description">{siteConfig.description}</p>
+    </div>
+
+    <div class="hero-carousel reveal" data-carousel>
+      <div class="hero-carousel-track">
+        {
+          slides.map((slide, index) => (
+            <article
+              class="hero-slide"
+              data-slide
+              data-active={index === 0 ? 'true' : 'false'}
+            >
+              <div
+                class="hero-slide-media"
+                style={
+                  slide.gambar
+                    ? `background-image: linear-gradient(180deg, rgba(17, 17, 17, 0.08), rgba(17, 17, 17, 0.6)), url(${slide.gambar});`
+                    : undefined
+                }
+              >
+                {!slide.gambar && <span class="hero-slide-fallback">{activeTheme.label}</span>}
+              </div>
+              <div class="hero-slide-copy">
+                <span>{String(index + 1).padStart(2, '0')}</span>
+                <h2>{slide.judul}</h2>
+                <p>{slide.subjudul}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="hero-dots" aria-label="Navigasi carousel">
+        {
+          slides.map((slide, index) => (
+            <button
+              type="button"
+              class="hero-dot"
+              data-dot
+              data-active={index === 0 ? 'true' : 'false'}
+              aria-label={slide.judul}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

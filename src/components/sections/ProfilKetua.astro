@@ -1,0 +1,29 @@
+---
+import { siteConfig } from '../../config/site.config';
+import { getProfilKetuaContent } from '../../lib/site-content';
+
+const profil = getProfilKetuaContent();
+---
+
+<section class="content-section">
+  <div class="shell profile-grid reveal">
+    <div class="profile-visual">
+      {
+        profil.foto ? (
+          <img src={profil.foto} alt={profil.nama} loading="lazy" />
+        ) : (
+          <div class="image-fallback image-fallback-profile">{profil.nama}</div>
+        )
+      }
+    </div>
+
+    <div class="profile-copy">
+      <p class="eyebrow">{siteConfig.publicText.profilEyebrow}</p>
+      <h2>{profil.nama}</h2>
+      <p class="profile-role">{profil.jabatan}</p>
+      <p class="profile-subtitle">{profil.subJudul}</p>
+      <p>{profil.biografi}</p>
+      <blockquote>{profil.kutipan}</blockquote>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import Footer from '../../components/layout/Footer.astro';
+import Navbar from '../../components/layout/Navbar.astro';
+import { siteConfig } from '../../config/site.config';
+import { formatTanggalIndonesia } from '../../lib/format';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (left, right) => right.data.tanggal.valueOf() - left.data.tanggal.valueOf()
+);
+---
+
+<BaseLayout title="Blog" description={siteConfig.publicText.blogSubtitle}>
+  <Navbar />
+  <main id="konten" class="blog-page">
+    <section class="content-section">
+      <div class="shell blog-header reveal is-visible">
+        <p class="eyebrow">{siteConfig.publicText.blogTitle}</p>
+        <h1>{siteConfig.publicText.blogTitle}</h1>
+        <p class="lead-small">{siteConfig.publicText.blogSubtitle}</p>
+      </div>
+    </section>
+
+    <section class="content-section blog-listing">
+      <div class="shell blog-grid">
+        {
+          posts.map((post) => (
+            <article class="blog-card reveal is-visible">
+              <p class="blog-meta">
+                {formatTanggalIndonesia(post.data.tanggal)} · {post.data.penulis}
+              </p>
+              <h2>{post.data.judul}</h2>
+              <p>{post.data.ringkasan}</p>
+              <a href={`/blog/${post.id}`}>{siteConfig.publicText.blogReadMore}</a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,23 @@
+---
+import { siteConfig } from '../../config/site.config';
+import { getVisiMisiContent } from '../../lib/site-content';
+
+const visiMisi = getVisiMisiContent();
+---
+
+<section class="content-section">
+  <div class="shell vision-grid reveal">
+    <div class="vision-panel">
+      <p class="eyebrow">{siteConfig.publicText.visiEyebrow}</p>
+      <h2>{siteConfig.publicText.visiTitle}</h2>
+      <p class="lead-small">{visiMisi.visi}</p>
+    </div>
+
+    <div class="mission-panel">
+      <h2>{siteConfig.publicText.misiTitle}</h2>
+      <ol class="mission-list">
+        {visiMisi.misi.map((item) => <li>{item}</li>)}
+      </ol>
+    </div>
+  </div>
+</section>

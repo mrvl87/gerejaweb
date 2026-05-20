@@ -1,0 +1,43 @@
+---
+import { liturgiThemes } from '../config/liturgi.config';
+import { siteConfig } from '../config/site.config';
+import { getPengaturanContent } from '../lib/site-content';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = siteConfig.description } = Astro.props;
+const pengaturan = getPengaturanContent();
+const activeTheme = liturgiThemes[pengaturan.masaLiturgi] ?? liturgiThemes.biasa;
+const pageTitle = title ? `${title} | ${siteConfig.namaGereja}` : siteConfig.namaGereja;
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={new URL(Astro.url.pathname, siteConfig.siteUrl).toString()} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, siteConfig.siteUrl).toString()} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="theme-color" content={activeTheme.warnaPrimer} />
+  </head>
+  <body class={`liturgi-${pengaturan.masaLiturgi}`}>
+    <a class="skip-link" href="#konten">{siteConfig.publicText.skipToContent}</a>
+    <slot />
+  </body>
+</html>

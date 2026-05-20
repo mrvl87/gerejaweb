@@ -1,0 +1,33 @@
+{
+  "items": [
+    {
+      "tahun": 1956,
+      "judul": "Awal Persekutuan",
+      "narasi": "Persekutuan rumah tangga dimulai sebagai ruang ibadah sederhana yang mempertemukan keluarga-keluarga untuk berdoa dan mendengar firman.",
+      "namaKetua": "Pdt. A. Rumainum",
+      "labelKetua": "Perintis",
+      "isMilestone": true
+    },
+    {
+      "tahun": 1978,
+      "judul": "Penataan Pelayanan Jemaat",
+      "narasi": "Struktur pelayanan dibentuk lebih rapi agar penggembalaan, pendidikan iman, dan pelayanan sosial dapat menjangkau warga jemaat secara teratur.",
+      "namaKetua": "Pdt. Daniel Awom",
+      "labelKetua": "Ketua Jemaat"
+    },
+    {
+      "tahun": 1999,
+      "judul": "Penguatan Kesaksian Sosial",
+      "narasi": "Jemaat memperluas keterlibatan di tengah masyarakat melalui pendampingan keluarga, pelayanan doa, dan kerja sama lintas komunitas.",
+      "namaKetua": "Pdt. Efraim Kambu"
+    },
+    {
+      "tahun": 2024,
+      "judul": "Pelayanan yang Terkoneksi dan Terbuka",
+      "narasi": "Memasuki era digital, jemaat menata informasi dan komunikasi agar pelayanan lebih mudah dijangkau oleh generasi muda maupun keluarga yang tersebar.",
+      "namaKetua": "Pdt. Markus Kafiar, S.Th.",
+      "labelKetua": "Ketua Jemaat",
+      "isMilestone": true
+    }
+  ]
+}

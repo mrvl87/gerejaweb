@@ -1,0 +1,42 @@
+---
+import { getCollection, render } from 'astro:content';
+import Footer from '../../components/layout/Footer.astro';
+import Navbar from '../../components/layout/Navbar.astro';
+import { siteConfig } from '../../config/site.config';
+import { formatTanggalIndonesia } from '../../lib/format';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<BaseLayout title={post.data.judul} description={post.data.ringkasan}>
+  <Navbar />
+  <main id="konten" class="blog-page">
+    <article class="content-section">
+      <div class="shell article-shell">
+        <a class="back-link" href="/blog">{siteConfig.publicText.blogBack}</a>
+        <header class="article-header reveal is-visible">
+          <p class="blog-meta">
+            {formatTanggalIndonesia(post.data.tanggal)} · {post.data.penulis}
+          </p>
+          <h1>{post.data.judul}</h1>
+          <p class="lead-small">{post.data.ringkasan}</p>
+        </header>
+
+        <div class="article-body reveal is-visible">
+          <Content />
+        </div>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</BaseLayout>

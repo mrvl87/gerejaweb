@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "label": "Total Jemaat",
+      "angka": "1.247",
+      "keterangan": "Per Desember 2024"
+    },
+    {
+      "label": "Keluarga",
+      "angka": "318",
+      "keterangan": "Data pastoral"
+    },
+    {
+      "label": "Pelayan Aktif",
+      "angka": "86",
+      "keterangan": "Majelis dan tim pelayanan"
+    },
+    {
+      "label": "Rayon Pelayanan",
+      "angka": "12",
+      "keterangan": "Wilayah penggembalaan"
+    }
+  ]
+}

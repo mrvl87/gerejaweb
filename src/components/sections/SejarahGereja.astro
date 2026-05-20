@@ -1,0 +1,45 @@
+---
+import { siteConfig } from '../../config/site.config';
+import { cn } from '../../lib/format';
+import { getSejarahContent } from '../../lib/site-content';
+
+const sejarah = getSejarahContent();
+---
+
+<section class="content-section" id="sejarah">
+  <div class="shell reveal">
+    <div class="section-heading">
+      <p class="eyebrow">{siteConfig.publicText.sejarahEyebrow}</p>
+      <h2>{siteConfig.publicText.sejarahTitle}</h2>
+    </div>
+
+    <div class="history-timeline" data-history>
+      <div class="history-spine" aria-hidden="true">
+        <div class="history-spine-fill" data-history-spine-fill></div>
+      </div>
+
+      {
+        sejarah.map((item, index) => (
+          <article
+            class={cn(
+              'history-item reveal',
+              index % 2 === 0 ? 'history-left' : 'history-right',
+              item.isMilestone && 'history-milestone'
+            )}
+          >
+            <div class="history-card">
+              <p class="history-year">{item.tahun}</p>
+              <h3>{item.judul}</h3>
+              <p>{item.narasi}</p>
+              {item.namaKetua && (
+                <p class="history-meta">
+                  {item.labelKetua ?? 'Ketua Jemaat'}: {item.namaKetua}
+                </p>
+              )}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
