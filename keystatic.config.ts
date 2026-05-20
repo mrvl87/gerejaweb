@@ -1,24 +1,21 @@
 import { collection, config, fields, singleton } from '@keystatic/core';
 import { liturgiThemes } from './src/config/liturgi.config';
 
+const defaultGithubRepo = 'mrvl87/gerejaweb' as const;
 const githubRepoValue = process.env.KEYSTATIC_GITHUB_REPO;
 const githubRepo =
   githubRepoValue && githubRepoValue.includes('/')
     ? (githubRepoValue as `${string}/${string}`)
-    : undefined;
+    : defaultGithubRepo;
 const toWebpFilename = (originalFilename: string) =>
   `${originalFilename.replace(/\.[^.]+$/, '').replace(/[^a-zA-Z0-9-_]+/g, '-').toLowerCase()}.webp`;
 
-// [CMS SCHEMA] Storage local by default, switches to GitHub mode when repo env is present.
+// [CMS SCHEMA] Default ke GitHub repo produksi, masih bisa dioverride via env.
 export default config({
-  storage: githubRepo
-    ? {
-        kind: 'github',
-        repo: githubRepo,
-      }
-    : {
-        kind: 'local',
-      },
+  storage: {
+    kind: 'github',
+    repo: githubRepo,
+  },
   singletons: {
     pengaturan: singleton({
       label: 'Pengaturan Umum',
